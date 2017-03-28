@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-/**
- * Created by admin on 28.03.2017.
- */
 
 public class Manga {
     @SerializedName("a")
