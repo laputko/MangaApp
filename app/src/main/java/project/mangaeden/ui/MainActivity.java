@@ -1,7 +1,9 @@
-package project.mangaeden;
+package project.mangaeden.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import project.mangaeden.R;
 
 public class MainActivity extends AppCompatActivity {
 
