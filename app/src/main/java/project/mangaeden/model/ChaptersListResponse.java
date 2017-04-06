@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ChaptersList {
+public class ChaptersListResponse {
     private String alias;
     private ArrayList<String> categories;
-    private ArrayList<String> chapters;                                             //Здесь тоже массив с разными типами
+    private ArrayList<Chapter> chapters;                                           //Здесь тоже массив с разными типами
     private int chapters_len;
     private String description;
     private int hits;
@@ -21,7 +21,7 @@ public class ChaptersList {
     private int type;
     private boolean updateKeyworlds;
 
-    public ChaptersList(String alias, ArrayList<String> categories, ArrayList<String> chapters, int chapters_len, String description, int hits, String image, int last_chapter_date, int released, String startsWith, int status, String title, ArrayList<String> title_kw, int type, boolean updateKeyworlds) {
+    public ChaptersListResponse(String alias, ArrayList<String> categories, ArrayList<Chapter> chapters, int chapters_len, String description, int hits, String image, int last_chapter_date, int released, String startsWith, int status, String title, ArrayList<String> title_kw, int type, boolean updateKeyworlds) {
         this.alias = alias;
         this.categories = categories;
         this.chapters = chapters;
@@ -39,7 +39,6 @@ public class ChaptersList {
         this.updateKeyworlds = updateKeyworlds;
     }
 
-
     public String getAlias() {
         return alias;
     }
@@ -56,11 +55,11 @@ public class ChaptersList {
         this.categories = categories;
     }
 
-    public ArrayList<String> getChapters() {
+    public ArrayList<Chapter> getChapters() {
         return chapters;
     }
 
-    public void setChapters(ArrayList<String> chapters) {
+    public void setChapters(ArrayList<Chapter> chapters) {
         this.chapters = chapters;
     }
 
@@ -162,7 +161,7 @@ public class ChaptersList {
 
     @Override
     public String toString() {
-        return "ChaptersList{" +
+        return "ChaptersListResponse{" +
                 "alias='" + alias + '\'' +
                 ", categories=" + categories +
                 ", chapters=" + chapters +
