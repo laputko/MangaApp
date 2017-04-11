@@ -17,13 +17,13 @@ public class Manga {
     @SerializedName("im")
     private String image;
     @SerializedName("ld")
-    private double lastChapterDate;
+    private long lastChapterDate;
     @SerializedName("s")
     private int status;
     @SerializedName("t")
     private String title;
 
-    public Manga(String alias, ArrayList<String> categories, int hits, String ID, String image, double lastChapterDate, int status, String title) {
+    public Manga(String alias, ArrayList<String> categories, int hits, String ID, String image, long lastChapterDate, int status, String title) {
         this.alias = alias;
         this.categories = categories;
         this.hits = hits;
@@ -74,11 +74,11 @@ public class Manga {
         this.image = image;
     }
 
-    public double getLastChapterDate() {
+    public long getLastChapterDate() {
         return lastChapterDate;
     }
 
-    public void setLastChapterDate(double lastChapterDate) {
+    public void setLastChapterDate(long lastChapterDate) {
         this.lastChapterDate = lastChapterDate;
     }
 
@@ -101,8 +101,8 @@ public class Manga {
 
     @Override
     public String toString() {
-        return "Manga{" +
-                "alias='" + alias + '\'' +
+        return "\nManga{" +
+                "\nalias='" + alias + '\'' +
                 ",\n categories=" + categories +
                 ",\n hits=" + hits +
                 ",\n ID='" + ID + '\'' +

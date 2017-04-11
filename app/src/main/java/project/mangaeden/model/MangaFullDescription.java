@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ChaptersListResponse {
+public class MangaFullDescription {
     private String alias;
     private ArrayList<String> categories;
     private ArrayList<Chapter> chapters;                                           //Здесь тоже массив с разными типами
@@ -21,7 +21,7 @@ public class ChaptersListResponse {
     private int type;
     private boolean updateKeyworlds;
 
-    public ChaptersListResponse(String alias, ArrayList<String> categories, ArrayList<Chapter> chapters, int chapters_len, String description, int hits, String image, int last_chapter_date, int released, String startsWith, int status, String title, ArrayList<String> title_kw, int type, boolean updateKeyworlds) {
+    public MangaFullDescription(String alias, ArrayList<String> categories, ArrayList<Chapter> chapters, int chapters_len, String description, int hits, String image, int last_chapter_date, int released, String startsWith, int status, String title, ArrayList<String> title_kw, int type, boolean updateKeyworlds) {
         this.alias = alias;
         this.categories = categories;
         this.chapters = chapters;
@@ -161,7 +161,7 @@ public class ChaptersListResponse {
 
     @Override
     public String toString() {
-        return "ChaptersListResponse{" +
+        return "MangaFullDescription{" +
                 "alias='" + alias + '\'' +
                 ", categories=" + categories +
                 ", chapters=" + chapters +

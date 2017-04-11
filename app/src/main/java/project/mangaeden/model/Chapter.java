@@ -2,11 +2,11 @@ package project.mangaeden.model;
 
 public class Chapter {
     private int number;
-    private int date;
+    private long date;
     private String title;
     private String ID;
 
-    public Chapter(int number, int date, String title, String ID) {
+    public Chapter(int number, long date, String title, String ID) {
         this.number = number;
         this.date = date;
         this.title = title;
@@ -21,11 +21,11 @@ public class Chapter {
         this.number = number;
     }
 
-    public int getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
