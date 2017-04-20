@@ -19,10 +19,6 @@ import project.mangaeden.R;
 import project.mangaeden.model.Manga;
 
 
-/**
- * Created by admin on 11.04.2017.
- */
-
 public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHolder> {
     ArrayList<Manga> mangaList;
     private OnItemClickListener listener;
@@ -50,10 +46,13 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
         return mangaList.size();
     }
 
+
+    //
     class MangaViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivMangaImage;
         private TextView tvMangaTitle, tvMangaHits, tvMangaDate;
 
+        //Метод в котором присваиваем id элементов вьюшки им java коду
         public MangaViewHolder(View itemView) {
             super(itemView);
             ivMangaImage = (ImageView) itemView.findViewById(R.id.ivMangaImage);
@@ -62,7 +61,9 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
             tvMangaDate = (TextView) itemView.findViewById(R.id.tvMangaDate);
         }
 
+        //Метод показывающий в каком формате будут наши элементы вьюшки
         private void bind(final Manga mangaItem,final OnItemClickListener listener){
+
             final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy", Locale.US);
 
             Picasso.with(ivMangaImage.getContext())

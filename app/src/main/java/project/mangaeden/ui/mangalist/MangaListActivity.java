@@ -25,6 +25,8 @@ public class MangaListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manga_list);
+
+        //По нажатию на Item появляется всплывающее сообщение ID манги
         adapter = new MangaAdapter(new ArrayList<Manga>(), new MangaAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Manga manga) {
@@ -36,12 +38,13 @@ public class MangaListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+        //Формируем список манг
         MangaEdenApp.getMangaApi().getMangaList(0, 0, 25).enqueue(new Callback<MangaListResponse>() {
             @Override
             public void onResponse(Call<MangaListResponse> call, Response<MangaListResponse> response) {
-                adapter.mangaList.clear();
-                adapter.mangaList.addAll(response.body().getMangas());
-                adapter.notifyDataSetChanged();
+                adapter.mangaList.clear();                                                          //Очищаем
+                adapter.mangaList.addAll(response.body().getMangas());                              //Добавляем все
+                adapter.notifyDataSetChanged();                                                     //Обновляем список
             }
 
             @Override
