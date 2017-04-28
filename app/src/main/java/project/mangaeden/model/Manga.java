@@ -1,11 +1,13 @@
 package project.mangaeden.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 
-public class Manga {
+public class Manga implements Comparable<Manga> {
     @SerializedName("a")
     private String alias;
     @SerializedName("c")
@@ -111,5 +113,15 @@ public class Manga {
                 ",\n status=" + status +
                 ",\n title='" + title + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NonNull Manga otherManga) {
+        if (lastChapterDate > otherManga.getLastChapterDate())
+            return -1;
+        else if (otherManga.getLastChapterDate() > lastChapterDate)
+            return 1;
+        else return 0;
+
     }
 }

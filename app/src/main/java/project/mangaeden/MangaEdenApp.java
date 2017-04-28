@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MangaEdenApp extends Application {
     private static MangaApi mangaApi;
 
-    public static MangaApi getMangaApi(){
+    public static MangaApi getMangaApi() {
         return mangaApi;
     }
 
@@ -32,7 +32,7 @@ public class MangaEdenApp extends Application {
         configureRetrofit();
     }
 
-    private void configureRetrofit(){
+    private void configureRetrofit() {
         //Конвертер для Image
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Image.class, new ImageDeserializer())

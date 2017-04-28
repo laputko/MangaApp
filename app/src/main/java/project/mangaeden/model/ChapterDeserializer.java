@@ -16,7 +16,7 @@ public class ChapterDeserializer implements JsonDeserializer {
         return new Chapter(
                 chapterArray.get(0).getAsInt(),
                 chapterArray.get(1).getAsLong(),
-                chapterArray.get(2) instanceof JsonNull ?"***": chapterArray.get(2).getAsString(),
+                chapterArray.get(2) instanceof JsonNull ? "***" : chapterArray.get(2).getAsString(),
                 chapterArray.get(3).getAsString()
         );
     }

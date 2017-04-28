@@ -17,7 +17,6 @@ public interface MangaApi {
     @GET("api/list/{lang}/")
     Call<MangaListResponse> getMangaList(@Path("lang") int lang, @Query("p") int page, @Query("l") int length);
 
-
     @GET("api/manga/{mangaId}/")
     Call<MangaFullDescription> getMangaFull(@Path("mangaId") String mangaId);
 

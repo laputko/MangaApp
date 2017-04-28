@@ -10,6 +10,7 @@ public class MangaFullDescription {
     private ArrayList<Chapter> chapters;                                           //Здесь тоже массив с разными типами
     private int chapters_len;
     private String description;
+    private String author;
     private int hits;
     private String image;
     private int last_chapter_date;
@@ -21,12 +22,13 @@ public class MangaFullDescription {
     private int type;
     private boolean updateKeyworlds;
 
-    public MangaFullDescription(String alias, ArrayList<String> categories, ArrayList<Chapter> chapters, int chapters_len, String description, int hits, String image, int last_chapter_date, int released, String startsWith, int status, String title, ArrayList<String> title_kw, int type, boolean updateKeyworlds) {
+    public MangaFullDescription(String alias, ArrayList<String> categories, ArrayList<Chapter> chapters, int chapters_len, String description, String author, int hits, String image, int last_chapter_date, int released, String startsWith, int status, String title, ArrayList<String> title_kw, int type, boolean updateKeyworlds) {
         this.alias = alias;
         this.categories = categories;
         this.chapters = chapters;
         this.chapters_len = chapters_len;
         this.description = description;
+        this.author = author;
         this.hits = hits;
         this.image = image;
         this.last_chapter_date = last_chapter_date;
@@ -38,6 +40,7 @@ public class MangaFullDescription {
         this.type = type;
         this.updateKeyworlds = updateKeyworlds;
     }
+
 
     public String getAlias() {
         return alias;
@@ -159,6 +162,14 @@ public class MangaFullDescription {
         this.updateKeyworlds = updateKeyworlds;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     @Override
     public String toString() {
         return "MangaFullDescription{" +
@@ -167,6 +178,7 @@ public class MangaFullDescription {
                 ", chapters=" + chapters +
                 ", chapters_len=" + chapters_len +
                 ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
                 ", hits=" + hits +
                 ", image='" + image + '\'' +
                 ", last_chapter_date=" + last_chapter_date +
@@ -178,5 +190,16 @@ public class MangaFullDescription {
                 ", type=" + type +
                 ", updateKeyworlds=" + updateKeyworlds +
                 '}';
+    }
+
+    public String getCategoriesAsString() {
+        String result = "";
+        if (!categories.isEmpty()) {
+            result = categories.get(0);
+            for (int i = 1; i < categories.size(); i++) {
+                result = result + ", " + categories.get(i);
+            }
+        }
+        return result;
     }
 }

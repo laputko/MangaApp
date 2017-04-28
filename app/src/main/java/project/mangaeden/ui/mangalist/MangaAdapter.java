@@ -62,7 +62,7 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
         }
 
         //Метод показывающий в каком формате будут наши элементы вьюшки
-        private void bind(final Manga mangaItem,final OnItemClickListener listener){
+        private void bind(final Manga mangaItem, final OnItemClickListener listener) {
 
             final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy", Locale.US);
 
@@ -85,7 +85,7 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
 
     }
 
-    interface OnItemClickListener{
+    interface OnItemClickListener {
         void onItemClick(Manga manga);
     }
 }

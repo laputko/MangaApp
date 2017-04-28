@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         Button btnGetMangas = (Button) findViewById(R.id.btnGetMangas);
         btnGetMangas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
                 MangaEdenApp.getMangaApi().getMangaList(0, 0, 25).enqueue(new Callback<MangaListResponse>() {
                     @Override
                     public void onResponse(Call<MangaListResponse> call, Response<MangaListResponse> response) {
-                        Log.d("Mangas",response.body().getMangas().toString());
+                        Log.d("Mangas", response.body().getMangas().toString());
                     }
 
                     @Override
                     public void onFailure(Call<MangaListResponse> call, Throwable t) {
-                        Log.d("Mangas",t.getMessage());
+                        Log.d("Mangas", t.getMessage());
                     }
                 });
             }
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<MangaFullDescription> call, Throwable t) {
-                        Log.d("MangaDescription",t.getMessage());
+                        Log.d("MangaDescription", t.getMessage());
                     }
                 });
             }
