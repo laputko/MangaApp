@@ -20,6 +20,7 @@ import project.mangaeden.model.Manga;
 
 
 public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHolder> {
+
     ArrayList<Manga> mangaList;
     private OnItemClickListener listener;
 
@@ -47,7 +48,7 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
     }
 
 
-    //
+    //Ищем вьюшки элементов
     class MangaViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivMangaImage;
         private TextView tvMangaTitle, tvMangaHits, tvMangaDate;

@@ -15,11 +15,8 @@ import project.mangaeden.model.ImageDeserializer;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by admin on 07.04.2017.
- */
-
 public class MangaEdenApp extends Application {
+
     private static MangaApi mangaApi;
 
     public static MangaApi getMangaApi() {
@@ -32,6 +29,7 @@ public class MangaEdenApp extends Application {
         configureRetrofit();
     }
 
+    //Настраиваем retrofit
     private void configureRetrofit() {
         //Конвертер для Image
         Gson gson = new GsonBuilder()

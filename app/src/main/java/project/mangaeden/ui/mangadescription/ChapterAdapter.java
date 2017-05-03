@@ -16,6 +16,7 @@ import project.mangaeden.model.Chapter;
 import project.mangaeden.model.Manga;
 
 public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder> {
+
     ArrayList<Chapter> chapterList;
     private OnItemClickListener listener;
 
@@ -62,10 +63,16 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
             tvNumber.setText("№" + chapterItem.getNumber());
             tvTitle.setText(chapterItem.getTitle());
             tvDate.setText(DATE_FORMAT.format(new Date(1000 * chapterItem.getDate())));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(chapterItem);
+                }
+            });
         }
     }
 
     interface OnItemClickListener {
-        void onItemClick(Manga manga);
+        void onItemClick(Chapter chapter);
     }
 }

@@ -1,19 +1,19 @@
 package project.mangaeden.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ImageListResponse {
-    private List<Image> images;
+    private ArrayList<Image> images;
 
-    public ImageListResponse(List<Image> images) {
+    public ImageListResponse(ArrayList<Image> images) {
         this.images = images;
     }
 
-    public List<Image> getImages() {
+    public ArrayList<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<Image> images) {
+    public void setImages(ArrayList<Image> images) {
         this.images = images;
     }
 
