@@ -29,12 +29,15 @@ import retrofit2.Response;
 
 public class MangaListActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
+
     private MangaAdapter adapter;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressBar progressBar;
     private TextView tvNoData;
+    private Call<MangaListResponse> mangaListResponseCall;
     ArrayList<Manga> list;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
                 getMangaList();
             }
         });
@@ -78,21 +82,36 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.manga_list, menu);                                         //Когда вызываем преобразуй xml файл в menu
         MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView = (SearchView) menuItem.getActionView();
         searchView.setOnQueryTextListener(this);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swipeRefreshLayout.setEnabled(false);
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                swipeRefreshLayout.setEnabled(true);
+                return false;
+            }
+        });
         return true;
     }
 
     //Метод на получение списка манг
     private void getMangaList() {
         //Формируем список манг
-        MangaEdenApp.getMangaApi().getMangaList(0, 0, 25).enqueue(new Callback<MangaListResponse>() {
+        mangaListResponseCall = MangaEdenApp.getMangaApi().getMangaList(0);
+        mangaListResponseCall.enqueue(new Callback<MangaListResponse>() {
             @Override
             public void onResponse(Call<MangaListResponse> call, Response<MangaListResponse> response) {
                 tvNoData.setVisibility(View.GONE);
                 list = response.body().getMangas();
                 Collections.sort(list);
-                addDataToAdapter(list.subList(0, 25));
+                addDataToAdapter(list.subList(0, 100));
                 onStopRefresh();
             }
 
@@ -131,7 +150,8 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
 
             List<Manga> resultList = new ArrayList<>();
             for (Manga manga : list) {
-                if (manga.getTitle().toLowerCase().startsWith(newText.toLowerCase())) {
+                if (manga.getTitle().toLowerCase().startsWith(newText.toLowerCase())
+                        || manga.getTitle().toLowerCase().contains(" " + newText.toLowerCase())) {
                     resultList.add(manga);
                 }
             }
@@ -139,5 +159,18 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
             if (resultList.isEmpty()) tvNoData.setVisibility(View.VISIBLE);
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!searchView.isIconified()){
+            addDataToAdapter(list.subList(0, 25));
+            searchView.onActionViewCollapsed();
+            swipeRefreshLayout.setEnabled(true);
+        } else if (swipeRefreshLayout.isRefreshing()){
+            mangaListResponseCall.cancel();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,7 +48,6 @@ public class MangaFullDescriptionActivity extends AppCompatActivity {
     private String mangaID;
 
 
-
     public static Intent newIntent(Context context, String mangaID, String mangaTittle) {
         Intent intent = new Intent(context, MangaFullDescriptionActivity.class);
         intent.putExtra(MANGA_ID, mangaID);
@@ -59,6 +59,8 @@ public class MangaFullDescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manga_full_description);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String tittle = getIntent().getExtras().getString(MANGA_TITTLE);
         getSupportActionBar().setTitle(tittle);
@@ -120,6 +122,14 @@ public class MangaFullDescriptionActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

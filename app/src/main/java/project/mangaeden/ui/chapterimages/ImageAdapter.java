@@ -58,8 +58,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         private void bind(final Image imageItem, final OnItemClickListener listener) {
             Glide.with(itemView.getContext())
-                    .load("http://cdn.mangaeden.com/mangasimg/" + (imageItem.getUrl()))
-                    .placeholder(R.mipmap.ic_launcher)
+                    .load("http://cdn.mangaeden.com/mangasimg/" + imageItem.getUrl())
                     .error(R.mipmap.ic_launcher)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(ivPage);
@@ -67,13 +66,13 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClick(imageItem);
+                    listener.onItemClick(imageItem, getAdapterPosition());
                 }
             });
         }
     }
 
     interface OnItemClickListener {
-        void onItemClick(Image image);
+        void onItemClick(Image image, int position);
     }
 }
