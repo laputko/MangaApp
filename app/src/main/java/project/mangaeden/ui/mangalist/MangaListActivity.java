@@ -1,5 +1,7 @@
 package project.mangaeden.ui.mangalist;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressBar progressBar;
+    private TextView tvNoInternetConnection;
     private TextView tvNoData;
     private Call<MangaListResponse> mangaListResponseCall;
     ArrayList<Manga> list;
@@ -52,7 +55,6 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 getMangaList();
             }
         });
@@ -70,6 +72,7 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+        tvNoInternetConnection = (TextView) findViewById(R.id.tvNoInternetConnection);
         tvNoData = (TextView) findViewById(R.id.tvNoData);
 
         list = new ArrayList<>();
@@ -108,7 +111,7 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
         mangaListResponseCall.enqueue(new Callback<MangaListResponse>() {
             @Override
             public void onResponse(Call<MangaListResponse> call, Response<MangaListResponse> response) {
-                tvNoData.setVisibility(View.GONE);
+                tvNoInternetConnection.setVisibility(View.GONE);
                 list = response.body().getMangas();
                 Collections.sort(list);
                 addDataToAdapter(list.subList(0, 100));
@@ -118,7 +121,7 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
             @Override
             public void onFailure(Call<MangaListResponse> call, Throwable t) {
                 onStopRefresh();
-                tvNoData.setVisibility(View.VISIBLE);
+                tvNoInternetConnection.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -147,7 +150,6 @@ public class MangaListActivity extends AppCompatActivity implements SearchView.O
         if (newText.isEmpty()) {
             addDataToAdapter(list.subList(0, 25));
         } else if (!list.isEmpty()) {
-
             List<Manga> resultList = new ArrayList<>();
             for (Manga manga : list) {
                 if (manga.getTitle().toLowerCase().startsWith(newText.toLowerCase())

@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,7 +15,8 @@
             android:id="@+id/progressBar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:id="@+id/contentPanel"
@@ -24,6 +28,8 @@
             android:paddingRight="8dp"
             android:paddingTop="8dp"
             android:visibility="invisible">
+
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -47,7 +53,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/ivCoverManga"
                     android:layout_toRightOf="@+id/ivCoverManga"
-                    android:text="Released: " />
+                    android:text="Released: "
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/tvReleased"
@@ -64,7 +71,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/Released"
                     android:layout_toRightOf="@+id/ivCoverManga"
-                    android:text="Author: " />
+                    android:text="Author: "
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/tvAuthor"
@@ -80,7 +88,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvAuthor"
                     android:layout_toRightOf="@+id/ivCoverManga"
-                    android:text="Categories: " />
+                    android:text="Categories: "
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/tvCategories"
@@ -98,7 +107,8 @@
                     android:layout_below="@+id/tvCategories"
                     android:layout_toEndOf="@+id/ivCoverManga"
                     android:layout_toRightOf="@+id/ivCoverManga"
-                    android:text="Hits: " />
+                    android:text="Hits: "
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/tvHits"
@@ -120,7 +130,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewChapterList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"/>
 
         </LinearLayout>
     </FrameLayout>

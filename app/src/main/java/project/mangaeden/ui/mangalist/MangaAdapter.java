@@ -69,8 +69,8 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
 
             Picasso.with(ivMangaImage.getContext())
                     .load("http://cdn.mangaeden.com/mangasimg/" + (mangaItem.getImage()))
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.drawable.no_image)
+                    .error(R.drawable.no_image)
                     .into(ivMangaImage);
 
             tvMangaTitle.setText(mangaItem.getTitle());

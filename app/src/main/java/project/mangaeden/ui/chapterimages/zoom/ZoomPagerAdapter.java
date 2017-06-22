@@ -44,17 +44,17 @@ public class ZoomPagerAdapter extends PagerAdapter {
 
         PhotoView photoView = (PhotoView) itemView.findViewById(R.id.photoView);
 
-        Picasso.with(photoView.getContext())
+        /*Picasso.with(photoView.getContext())
                 .load("http://cdn.mangaeden.com/mangasimg/" + images.get(position).getUrl())
-                .error(R.mipmap.ic_launcher)
-                .into(photoView);
-
-        /*Glide.with(itemView.getContext())
-                .load("http://cdn.mangaeden.com/mangasimg/" + images.get(position).getUrl())
-                .error(R.mipmap.ic_launcher)
-                .placeholder(R.drawable.ic_loading)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.no_image)
                 .into(photoView);*/
+
+        Glide.with(itemView.getContext())
+                .load("http://cdn.mangaeden.com/mangasimg/" + images.get(position).getUrl())
+                .error(R.mipmap.ic_launcher)
+                //.placeholder(R.drawable.no_image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(photoView);
 
         container.addView(itemView);
         return itemView;

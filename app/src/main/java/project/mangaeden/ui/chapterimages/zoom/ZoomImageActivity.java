@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class ZoomImageActivity extends AppCompatActivity {
     public static final String IMAGES_TAG = "images";
     public static final String IMAGE_POSITION = "position";
     public static final String POSITION_TAG = "position";
-    ViewPager pager;
+    ZoomViewPager pager;
 
 
 
@@ -37,12 +38,14 @@ public class ZoomImageActivity extends AppCompatActivity {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_zoom_image);
 
         ArrayList<Image> pageList = getIntent().getExtras().getParcelableArrayList(IMAGES_TAG);
         int position = getIntent().getExtras().getInt(IMAGE_POSITION);
 
-        pager = (ViewPager) findViewById(R.id.vpPager);
+        pager = (ZoomViewPager) findViewById(R.id.pager);
         ZoomPagerAdapter adapter = new ZoomPagerAdapter(pageList);
         pager.setAdapter(adapter);
         pager.setCurrentItem(position);

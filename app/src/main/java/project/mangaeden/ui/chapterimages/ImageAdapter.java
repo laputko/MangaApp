@@ -59,7 +59,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         private void bind(final Image imageItem, final OnItemClickListener listener) {
             Glide.with(itemView.getContext())
                     .load("http://cdn.mangaeden.com/mangasimg/" + imageItem.getUrl())
-                    .error(R.mipmap.ic_launcher)
+                    .error(R.drawable.no_image)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(ivPage);
 

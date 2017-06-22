@@ -27,11 +27,20 @@
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/tvNoInternetConnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No internet connection.\nSwipe down to refresh!"
+            android:visibility="gone" />
+
+
+        <TextView
             android:id="@+id/tvNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="No Data"
+            android:text="No data"
             android:visibility="gone" />
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

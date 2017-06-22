@@ -30,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                tools:text="Flower Dream" />
+                tools:text="Flower Dream"
+                android:textColor="@color/black"/>
 
             <LinearLayout
                 android:id="@+id/llMangaHits"

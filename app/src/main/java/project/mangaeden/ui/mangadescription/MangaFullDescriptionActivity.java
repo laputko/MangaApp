@@ -74,6 +74,7 @@ public class MangaFullDescriptionActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         contentPanel = (LinearLayout) findViewById(R.id.contentPanel);
 
+
         adapter = new ChapterAdapter(new ArrayList<Chapter>(), new ChapterAdapter.OnItemClickListener() {
 
             @Override
@@ -99,8 +100,8 @@ public class MangaFullDescriptionActivity extends AppCompatActivity {
 
                 Picasso.with(ivCoverManga.getContext())
                         .load("http://cdn.mangaeden.com/mangasimg/" + (description.getImage()))
-                        .placeholder(R.mipmap.ic_launcher)
-                        .error(R.mipmap.ic_launcher)
+                        .placeholder(R.drawable.no_image)
+                        .error(R.drawable.no_image)
                         .into(ivCoverManga);
 
                 tvReleased.setText("" + description.getReleased());
